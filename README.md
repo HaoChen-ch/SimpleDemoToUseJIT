@@ -25,7 +25,7 @@ make
 
 
 
-### `Run`
+### Run
 
 `./SimpleDemoToUseJIT`
 
