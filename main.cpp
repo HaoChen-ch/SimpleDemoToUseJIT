@@ -27,11 +27,11 @@ int main() {
     outs() << *(move(M.get())) << "\n";
     std::unique_ptr<ExecutionEngine> EE;
     EE.reset(EngineBuilder(move(M.get())).setEngineKind(llvm::EngineKind::JIT).create());
-    bool (*Sum)(char *, char *) = nullptr;
-    Sum = ((bool (*)(char *, char *)) EE->getFunctionAddress(std::string("equal")));
+    bool (*equal)(char *, char *) = nullptr;
+    equal = ((bool (*)(char *, char *)) EE->getFunctionAddress(std::string("equal")));
     char *a = "hello";
     char *b = "hello";
-    bool res = Sum(a, b);
+    bool res = equal(a, b);
     outs() << "res : " << res << "\n";
     return 0;
 }
